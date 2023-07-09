@@ -1,0 +1,87 @@
+.container {
+  width: 1000px;
+  margin: 5px auto;
+}
+
+.container-bottom {
+  width: 1000px;
+  margin: 5px auto;
+  position: relative;
+  bottom: 0;
+}
+
+.layout {
+  background: #f2f6f8;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.card {
+  border-radius: 25px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  .titleWidth {
+    width: 60%;
+  }
+}
+
+.button {
+  width: 120px;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  opacity: 0.8;
+  background-color: #5056ed;
+  margin: 0 5px;
+}
+.close-button {
+  background-color: #ccc;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.plus-button {
+  background-color: #5056ed;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.timer {
+  color: #5056ed;
+  margin: 0 10px;
+  font-weight: 500;
+}
+
+.vr {
+  background: #b5b1b1;
+  width: 3px;
+}
+
+.history {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.spanIcon {
+  font-size: 30px;
+
+  position: relative;
+  top: -10%;
+}
+
+.card-text {
+  line-height: 1;
+}

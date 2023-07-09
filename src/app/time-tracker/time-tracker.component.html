@@ -1,0 +1,92 @@
+<div class="container">
+  <img
+    src="https://open-frontend-bucket.s3.amazonaws.com/interviews/001/logo.svg"
+  />
+  <span style="float:right;"
+    >Total Time Spent: <b>{{ this.totalTime }} hr</b></span
+  >
+</div>
+
+<div class="layout">
+  <div class="container">
+    <div class="card" *ngFor="let task of taskList; index as i">
+      <div class="card-body">
+        <div class="flex">
+          <h2 class="titleWidth">{{ task.task }}</h2>
+          <div style="display:flex;align-items:center;">
+            <div class="vr"></div>
+            <div class="timer">{{ task.timer }}</div>
+            <button
+              class="button"
+              [ngStyle]="{
+                background: task.buttonText == 'Start' ? '#5056ed' : '#ED5050'
+              }"
+              (click)="timer(i)"
+            >
+              {{ task.buttonText }}
+            </button>
+            <button type="button" class="close-button" (click)="deleteTask(i)">
+              <span class="spanIcon" aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-text history">
+          <h2>History</h2>
+          <ng-container *ngIf="task.history.length; else template">
+            <p *ngFor="let history of task.history.reverse()">
+              <span *ngIf="!history.stopDateAndTime"
+                >Started the timer at{{
+                  history.startDateAndTime
+                }}(Active)</span
+              >
+              <span *ngIf="history.stopDateAndTime"
+                >Started the timer at {{ history.startDateAndTime }} & Stopped
+                at {{ history.stopDateAndTime }}</span
+              >
+            </p>
+          </ng-container>
+          <ng-template #template>
+            <p>No History Found,Click on start button to track the timer</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="plus-button"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+    type="button"
+  >
+    <span aria-hidden="true" class="spanIcon" style="color:white">&plus;</span>
+  </button>
+</div>
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-group" style="padding:20px 30px;">
+          <label>Enter The Task Name</label>
+          <input class="form-control" type="text" [(ngModel)]="newTask" />
+          <button
+            class="button"
+            data-bs-dismiss="modal"
+            style="margin-top:10px;"
+            (click)="addTask()"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
